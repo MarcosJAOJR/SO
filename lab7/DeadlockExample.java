@@ -27,7 +27,13 @@ class DeadlockExample {
 
     HashMap<String, Integer> sysAvailable = new HashMap<String, Integer>() {{ put("A",3); put("B",11); put("C",7); }};
 
+    // Alg. Safety
     Safety safety = new Safety(process, sysAvailable, resources);
-    System.out.println(safety.run());
+    System.out.println("Algorítimo Safety: "+safety.run());
+
+    // Alg. Avoid
+    HashMap<String, Integer> requests = new HashMap<String, Integer>() {{ put("A",1); put("B",4); put("C",1); }};
+    Avoid avoid = new Avoid(process, sysAvailable, resources, requests, 0);
+    System.out.println("Algorítimo Avoid: "+avoid.run());
   }
 }

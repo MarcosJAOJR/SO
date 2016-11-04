@@ -15,6 +15,12 @@ class Process {
     return allocated.get(resource);
   }
 
+  public void incrementAllocated(HashMap<String, Integer> increment) {
+    for (String k : allocated.keySet()) {
+      this.allocated.put(k, this.allocated.get(k) + increment.get(k));
+    }
+  }
+
   public Integer getMax(String resource) {
     return max.get(resource);
   }
