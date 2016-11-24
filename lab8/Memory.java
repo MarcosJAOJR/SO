@@ -4,8 +4,8 @@ public class Memory {
 
   private String[] memory;
   private int nPageFault;
-  private int tPageReplace;
-  private int tExec;
+  private double tPageReplace;
+  private double tRead;
 
 
   public Memory(int length) {
@@ -13,10 +13,12 @@ public class Memory {
     this.length = this.memory.length;
     this.nPageFault = 0;
     this.tPageReplace = 0;
-    this.tExec = 0;
+    this.tRead = 0;
   }
 
   public String getPage(String page) throws Exception {
+    this.tRead = this.tRead + 200;
+
     for (int i = 0; i < this.memory.length ; i++ ) {
       if (this.memory[i] != null && this.memory[i].equals(page))
         return this.memory[i];
@@ -29,7 +31,7 @@ public class Memory {
     if (index >= 0 && index < memory.length) {
       if (this.memory[index] != null) {
         // Espaço de memória não estava vazio
-        // TODO: adicionar tempo de troca de página
+        this.tPageReplace = this.tPageReplace + 2000000;
       }
       this.memory[index] = page;
     }
@@ -73,7 +75,7 @@ public class Memory {
       System.out.print(" " + ((slot != null)?slot:" ") + " |");
     }
     System.out.println("\n\n* Page Faults: " + this.nPageFault);
-    System.out.println("* Razão tempo troca de páginas e tempo total execução: " + this.tPageReplace + "/" + this.tExec);
+    System.out.println("* Razão tempo troca de páginas e tempo total execução: " + this.tPageReplace/(this.tPageReplace+this.tRead));
     System.out.println("-----------------------------------------------------------");
   }
 

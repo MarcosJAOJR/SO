@@ -1,13 +1,14 @@
-public class MMU {
+public class MemoryManager {
 
   private String replaceAlg;
   private Memory memory;
   private String[] pageRequests;
 
-  public MMU(Memory m, String[] pageRequests, String replaceAlg) {
+  public MemoryManager(Memory m, String[] pageRequests, String replaceAlg) {
     this.memory = m;
     this.pageRequests = pageRequests;
     this.replaceAlg = replaceAlg;
+    System.out.println("Iniciando algorítimo " + this.replaceAlg.toUpperCase());
   }
 
   public void init() throws Exception {
