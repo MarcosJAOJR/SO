@@ -11,7 +11,7 @@ public class MMU {
   }
 
   public void init() throws Exception {
-    switch (this.replaceAlg) {
+    switch (this.replaceAlg.toUpperCase()) {
       case "FIFO":
         FIFO fifo = new FIFO(this.memory, this.pageRequests);
         fifo.run();
@@ -19,6 +19,10 @@ public class MMU {
       case "OPT":
         OPT opt = new OPT(this.memory, this.pageRequests);
         opt.run();
+        break;
+      case "LRU":
+        LRU lru = new LRU(this.memory, this.pageRequests);
+        lru.run();
         break;
       default:
         throw new Exception("Invalid replacement algorithm");
