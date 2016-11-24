@@ -28,6 +28,10 @@ public class MMU {
         LFU lfu = new LFU(this.memory, this.pageRequests);
         lfu.run();
         break;
+      case "MFU":
+        MFU mfu = new MFU(this.memory, this.pageRequests);
+        mfu.run();
+        break;
       default:
         throw new Exception("Invalid replacement algorithm");
     }
