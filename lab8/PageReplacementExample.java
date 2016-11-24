@@ -10,7 +10,7 @@ public class PageReplacementExample {
     String[] arr = pageRequests.split(",");
 
     Memory m = new Memory(3);
-    MMU mmu = new MMU(m, arr, "LRU");
+    MMU mmu = new MMU(m, arr, "LFU");
 
     try {
       mmu.init();

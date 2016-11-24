@@ -24,6 +24,10 @@ public class MMU {
         LRU lru = new LRU(this.memory, this.pageRequests);
         lru.run();
         break;
+      case "LFU":
+        LFU lfu = new LFU(this.memory, this.pageRequests);
+        lfu.run();
+        break;
       default:
         throw new Exception("Invalid replacement algorithm");
     }
